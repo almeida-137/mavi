@@ -23,7 +23,7 @@
             </li>
             <li class="nav-item px-3 py-3 border-radius-sm  d-flex align-items-center">
                 <a href="{{ route('RTL') }}" class="nav-link text-white p-0">
-                    RTL
+                    RTLA
                 </a>
             </li>
         </ul>
