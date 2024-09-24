@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -21,16 +22,52 @@ class UserController extends Controller
         return view('users.create');
     }
 
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate(User::$rules);
+
+    //     $validatedData['password'] = Hash::make($validatedData['password']);
+
+    //     User::create($validatedData);
+
+    //     return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso.');
+    // }
     public function store(Request $request)
     {
-        $validatedData = $request->validate(User::$rules);
-
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        User::create($validatedData);
-
-        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso.');
+        // Validação dos dados
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'phone' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'user_type' => 'required|string|in:customer,admin',
+            'active' => 'nullable|boolean',
+            'company_id' => 'nullable|integer',
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        // Criação do usuário
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'user_type' => $request->user_type,
+            'active' => $request->active ? 1 : 0,
+            'company_id' => $request->company_id,
+        ]);
+    
+        // Redirecionamento com mensagem de sucesso
+        return redirect()->route('users.index')->with('success', 'Usuário criado com sucesso!');
     }
+
 
     public function show(User $user)
     {

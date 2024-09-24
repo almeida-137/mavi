@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{ route('users.index') }}" method="POST">
+                            <form action="{{ route('users.store') }}" method="POST">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-md-6">
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="company_id" class="form-label">Empresa</label>
-                                    <input type="text" class="form-control" id="company_id" name="company_id">
+                                    <input type="number" class="form-control" id="company_id" name="company_id">
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Salvar</button>
