@@ -89,6 +89,7 @@ Route::get('/laravel-examples/users-management', [UserController::class, 'index'
 Route::get('/usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/usuarios/criar', [UserController::class, 'create'])->name('users.create')->middleware('auth');
 Route::post('/usuarios/update', [UserController::class, 'store'])->name('users.store')->middleware('auth');
+Route::get('/usuarios/editar', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
 
 
 Route::get('/empresas', [CompanyController::class, 'index'])->name('companies.index')->middleware('auth');

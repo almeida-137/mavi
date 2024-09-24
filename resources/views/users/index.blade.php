@@ -86,7 +86,7 @@
                                         </td>
 
                                         <td class="text-center align-middle bg-transparent border-bottom">
-                                            <a href="#"><i class="fas fa-user-edit" aria-hidden="true"></i></a>
+                                            <a href="{{ route('users.edit') }}"><i class="fas fa-user-edit" aria-hidden="true"></i></a>
                                             <a href="#"><i class="fas fa-trash" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
