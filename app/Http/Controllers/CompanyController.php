@@ -52,7 +52,8 @@ class CompanyController extends Controller
     // Mostrar o formulário para editar uma empresa existente
     public function edit(Company $company)
     {
-        return view('companies.edit', compact('company'));
+        $users = User::all();
+        return view('companies.edit', compact('company', 'users'));
     }
 
     // Atualizar uma empresa existente

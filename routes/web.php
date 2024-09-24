@@ -93,4 +93,7 @@ Route::post('/usuarios/update', [UserController::class, 'store'])->name('users.s
 
 Route::get('/empresas', [CompanyController::class, 'index'])->name('companies.index')->middleware('auth');
 Route::get('/empresas/criar', [CompanyController::class, 'create'])->name('companies.create')->middleware('auth');
-Route::get('/empresas/update', [CompanyController::class, 'store'])->name('companies.store')->middleware('auth');
+Route::get('/empresas/salvar', [CompanyController::class, 'store'])->name('companies.store')->middleware('auth');
+Route::get('/empresas/editar', [CompanyController::class, 'edit'])->name('companies.edit')->middleware('auth');
+Route::get('/empresas/deletar', [CompanyController::class, 'destroy'])->name('companies.destroy')->middleware('auth');
+Route::get('/empresas/update', [CompanyController::class, 'update'])->name('companies.update')->middleware('auth');
