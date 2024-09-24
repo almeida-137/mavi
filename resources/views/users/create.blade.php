@@ -35,7 +35,6 @@
 
                         <div class="card-body">
                             <form action="{{ route('users.index') }}" method="POST">
-                                <!-- Atualizado para users.store -->
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-md-6">
@@ -44,25 +43,26 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <input type="email" class="form-control" id="email" name="email" 
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="password" class="form-label">Senha</label>
-                                        <input type="password" class="form-control" id="password" name="password"
-                                            required>
+                                        <input type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="password_confirmation" class="form-label">Confirmar Senha</label>
-                                        <input type="password" class="form-control" id="password_confirmation"
-                                            name="password_confirmation" required>
+                                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="phone" class="form-label">Telefone</label>
-                                        <input type="text" class="form-control" id="phone" name="phone">
+                                        <input type="text" class="form-control" id="phone" name="phone" 
+                                            pattern="\(\d{2}\)\d{5}-\d{4}" maxlength="14" oninput="formatPhone(this)" 
+                                            placeholder="(99)99999-9999" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="address" class="form-label">Endereço</label>
@@ -85,7 +85,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="mb-3" >
+                                <div class="mb-3">
                                     <label for="company_id" class="form-label">Empresa</label>
                                     <input type="text" class="form-control" id="company_id" name="company_id">
                                 </div>
@@ -100,3 +100,11 @@
         </div>
     </main>
 </x-app-layout>
+
+<script>
+function formatPhone(input) {
+    input.value = input.value.replace(/\D/g, '')
+                              .replace(/^(\d{2})(\d)/g, '($1)$2')
+                              .replace(/(\d{5})(\d)/g, '$1-$2');
+}
+</script>
