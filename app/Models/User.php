@@ -9,7 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable; // Incluir o HasProfilePhoto
 
     /**
      * The attributes that are mass assignable.
@@ -49,9 +49,10 @@ class User extends Authenticatable
         'password',
         'phone',
         'address',
-        'user_type', // e.g., 'customer' or 'admin'
-        'company_id', // Adicionando company_id
+        'user_type', 
+        'company', // Alterado para string
         'active',
+        'profile_photo_path', // Campo para o caminho da foto de perfil
     ];
 
     /**
@@ -66,7 +67,8 @@ class User extends Authenticatable
         'phone' => 'nullable|string|max:15',
         'address' => 'nullable|string|max:255',
         'user_type' => 'required|string|in:customer,admin',
-        'company_id' => 'nullable|exists:companies,id', // Validando company_id
+        'company' => 'nullable|string|max:255', // Atualizado para company como string
         'active' => 'boolean',
+        'profile_photo_path' => 'nullable|string|max:255', // Validação para profile_photo_path
     ];
 }

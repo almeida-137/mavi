@@ -88,7 +88,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  {{ is_current_route('RTL') ? 'active' : '' }}" href="">
+                <a class="nav-link" href="{{ route('companies.index')}}">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
                         <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
@@ -109,7 +109,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Listas</span>
+                    <span class="nav-link-text ms-1">Empresas</span>
                 </a>
             </li>
             <!-- DROPDOWN MENU -->

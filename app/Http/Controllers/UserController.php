@@ -43,7 +43,7 @@ class UserController extends Controller
             'address' => 'nullable|string|max:255',
             'user_type' => 'required|string|in:customer,admin',
             'active' => 'nullable|boolean',
-            'company_id' => 'nullable|integer',
+            'company' => 'required|string',
         ]);
     
         if ($validator->fails()) {
@@ -61,7 +61,7 @@ class UserController extends Controller
             'address' => $request->address,
             'user_type' => $request->user_type,
             'active' => $request->active ? 1 : 0,
-            'company_id' => $request->company_id,
+            'company' => $request->company,
         ]);
     
         // Redirecionamento com mensagem de sucesso

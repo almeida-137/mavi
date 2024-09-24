@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -88,3 +89,8 @@ Route::get('/laravel-examples/users-management', [UserController::class, 'index'
 Route::get('/usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 Route::get('/usuarios/criar', [UserController::class, 'create'])->name('users.create')->middleware('auth');
 Route::post('/usuarios/update', [UserController::class, 'store'])->name('users.store')->middleware('auth');
+
+
+Route::get('/empresas', [CompanyController::class, 'index'])->name('companies.index')->middleware('auth');
+Route::get('/empresas/criar', [CompanyController::class, 'create'])->name('companies.create')->middleware('auth');
+Route::get('/empresas/update', [CompanyController::class, 'store'])->name('companies.store')->middleware('auth');

@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('user_type')->default('customer');
             $table->text('about')->nullable();
-            $table->foreignId('company_id')->nullable()->constrained()->onDelete('set null'); // Adicionando company_id
-            $table->boolean('active')->default(true); // Adicionando o campo active
+            $table->string('company')->nullable(); // Alterado para company como string
+            $table->string('profile_photo_path')->nullable(); // Adicionado profile_photo_path
+            $table->boolean('active')->default(true); // Campo active
             $table->rememberToken();
             $table->timestamps();
         });

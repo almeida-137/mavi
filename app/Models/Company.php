@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    use HasFactory;
+    use HasFactory; // Incluir o HasProfilePhoto
 
     protected $fillable = [
         'razao_social',
@@ -24,6 +24,7 @@ class Company extends Model
         'tipo',
         'ativo',
         'responsavel',
+        'photo_path',
     ];
 
     // Atualiza a data da última atualização antes de salvar

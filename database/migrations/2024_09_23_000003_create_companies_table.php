@@ -4,32 +4,39 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id(); // ID auto-incremental
-            $table->string('razao_social'); // Razão social
-            $table->string('name'); // Nome do estabelecimento
-            $table->string('atividade_principal'); // Atividade principal
-            $table->string('cnae'); // CNAE
-            $table->string('endereco'); // Endereço
-            $table->string('bairro'); // Bairro
-            $table->string('cep'); // CEP
-            $table->string('cidade'); // Cidade
-            $table->string('telefone')->nullable(); // Telefone
-            $table->string('email')->unique(); // E-mail
-            $table->string('cnpj')->unique(); // CNPJ
-            $table->string('tipo'); // Tipo
-            $table->boolean('ativo')->default(true); // Ativo
-            $table->string('responsavel'); // Responsável
-            $table->timestamps(); // Cria created_at e updated_at
+            $table->id();
+            $table->string('razao_social');
+            $table->string('name');
+            $table->string('atividade_principal');
+            $table->string('cnae');
+            $table->string('endereco');
+            $table->string('bairro');
+            $table->string('cep');
+            $table->string('cidade');
+            $table->string('telefone');
+            $table->string('email');
+            $table->string('cnpj');
+            $table->string('tipo');
+            $table->boolean('ativo')->default(true);
+            $table->string('responsavel')->nullable();
+            $table->string('photo_path')->nullable(); // Adicionado o campo photo_path
+            $table->timestamps();
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
         Schema::dropIfExists('companies');
     }
-}
+};
