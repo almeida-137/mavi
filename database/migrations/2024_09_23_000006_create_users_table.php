@@ -18,8 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->string('location')->nullable();
+            $table->string('address')->nullable();
+            $table->string('user_type')->default('customer');
             $table->text('about')->nullable();
+            $table->foreignId('company_id')->nullable()->constrained()->onDelete('set null'); // Adicionando company_id
+            $table->boolean('active')->default(true); // Adicionando o campo active
             $table->rememberToken();
             $table->timestamps();
         });

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -37,5 +36,37 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+    ];
+
+    /**
+     * The attributes for a restaurant user.
+     *
+     * @var array<string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'phone',
+        'address',
+        'user_type', // e.g., 'customer' or 'admin'
+        'company_id', // Adicionando company_id
+        'active',
+    ];
+
+    /**
+     * The rules for user validation.
+     *
+     * @var array<string, string>
+     */
+    public static $rules = [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8|confirmed',
+        'phone' => 'nullable|string|max:15',
+        'address' => 'nullable|string|max:255',
+        'user_type' => 'required|string|in:customer,admin',
+        'company_id' => 'nullable|exists:companies,id', // Validando company_id
+        'active' => 'boolean',
     ];
 }
