@@ -9,16 +9,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return redirect('/dashboard');
@@ -81,9 +71,12 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'create']
 Route::post('/reset-password', [ResetPasswordController::class, 'store'])
     ->middleware('guest');
 
+
+
 Route::get('/laravel-examples/user-profile', [ProfileController::class, 'index'])->name('users.profile')->middleware('auth');
 Route::put('/laravel-examples/user-profile/update', [ProfileController::class, 'update'])->name('users.update')->middleware('auth');
 Route::get('/laravel-examples/users-management', [UserController::class, 'index'])->name('users-management')->middleware('auth');
+
 
 
 Route::get('/usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
@@ -94,7 +87,7 @@ Route::get('/usuarios/editar', [UserController::class, 'edit'])->name('users.edi
 
 Route::get('/empresas', [CompanyController::class, 'index'])->name('companies.index')->middleware('auth');
 Route::get('/empresas/criar', [CompanyController::class, 'create'])->name('companies.create')->middleware('auth');
-Route::get('/empresas/salvar', [CompanyController::class, 'store'])->name('companies.store')->middleware('auth');
+Route::post('/empresas/salvar', [CompanyController::class, 'store'])->name('companies.store')->middleware('auth');
 Route::get('/empresas/editar', [CompanyController::class, 'edit'])->name('companies.edit')->middleware('auth');
-Route::get('/empresas/deletar', [CompanyController::class, 'destroy'])->name('companies.destroy')->middleware('auth');
-Route::get('/empresas/update', [CompanyController::class, 'update'])->name('companies.update')->middleware('auth');
+Route::delete('/empresas/deletar', [CompanyController::class, 'destroy'])->name('companies.destroy')->middleware('auth');
+Route::put('/empresas/update', [CompanyController::class, 'update'])->name('companies.update')->middleware('auth');

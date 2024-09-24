@@ -34,14 +34,30 @@
                             <table class="table text-secondary text-center text-xs">
                                 <thead>
                                     <tr>
-                                        <th class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary"></th>
-                                        <th class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">ID</th>
-                                        <th class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">Razão Social</th>
-                                        <th class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">Nome</th>
-                                        <th class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">CNPJ</th>
-                                        <th class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">Telefone</th>
-                                        <th class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">Ativo</th>
-                                        <th class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary"></th>
+                                        <th
+                                            class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                        </th>
+                                        <th
+                                            class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            ID</th>
+                                        <th
+                                            class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            Razão Social</th>
+                                        <th
+                                            class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            Nome</th>
+                                        <th
+                                            class="text-left text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            CNPJ</th>
+                                        <th
+                                            class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            Telefone</th>
+                                        <th
+                                            class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                            Ativo</th>
+                                        <th
+                                            class="text-center text-uppercase font-weight-bold bg-transparent border-bottom text-secondary">
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,27 +65,37 @@
                                     <tr>
                                         <td class="align-middle bg-transparent border-bottom">
                                             <div class="d-flex justify-content-center align-items-center">
-                                                <img src="{{ $company->photo_path }}" class="rounded-circle mr-2" alt="{{ $company->name }}" style="height: 36px; width: 36px;">
+                                                <img src="{{ $company->photo_path }}" class="rounded-circle mr-2"
+                                                    alt="{{ $company->name }}" style="height: 36px; width: 36px;">
                                             </div>
                                         </td>
                                         <td class="align-middle bg-transparent border-bottom">{{ $company->id }}</td>
-                                        <td class="align-middle bg-transparent border-bottom">{{ $company->razao_social }}</td>
+                                        <td class="align-middle bg-transparent border-bottom">
+                                            {{ $company->razao_social }}</td>
                                         <td class="align-middle bg-transparent border-bottom">{{ $company->name }}</td>
                                         <td class="align-middle bg-transparent border-bottom">{{ $company->cnpj }}</td>
-                                        <td class="text-center align-middle bg-transparent border-bottom">{{ $company->telefone }}</td>
+                                        <td class="text-center align-middle bg-transparent border-bottom">
+                                            {{ $company->telefone }}</td>
                                         <td class="text-center align-middle bg-transparent border-bottom">
                                             @if($company->ativo)
-                                                Ativo
+                                            Ativo
                                             @else
-                                                Inativo
+                                            Inativo
                                             @endif
                                         </td>
                                         <td class="text-center align-middle bg-transparent border-bottom">
-                                            <a href="{{ route('companies.edit', $company) }}"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                            <form action="{{ route('companies.destroy', $company) }}" method="POST" style="display:inline;">
+                                            <a href="{{ route('companies.edit', $company) }}">
+                                                <i class="fas fa-edit" aria-hidden="true"></i>
+                                            </a>
+                                            <form action="{{ route('companies.destroy', $company) }}" method="POST"
+                                                style="display:inline;"
+                                                onsubmit="return confirm('Tem certeza que deseja excluir esta empresa?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-link"><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                                <a href="#"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>
