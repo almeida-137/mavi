@@ -39,16 +39,15 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="razao_social" class="form-label">Razão Social</label>
-                                        <input type="text" name="razao_social" id="razao_social"
-                                            class="form-control" required>
+                                        <input type="text" name="razao_social" id="razao_social" class="form-control"
+                                            required>
                                         @error('razao_social')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="name" class="form-label">Nome Fantasia</label>
-                                        <input type="text" name="name" id="name"
-                                            class="form-control" required>
+                                        <input type="text" name="name" id="name" class="form-control" required>
                                         @error('name')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -65,8 +64,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cnae" class="form-label">CNAE</label>
-                                        <input type="text" name="cnae" id="cnae"
-                                            class="form-control" required>
+                                        <input type="text" name="cnae" id="cnae" class="form-control" required>
                                         @error('cnae')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -75,16 +73,14 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="cnpj" class="form-label">CNPJ</label>
-                                        <input type="text" name="cnpj" id="cnpj"
-                                            class="form-control" required>
+                                        <input type="text" name="cnpj" id="cnpj" class="form-control" required>
                                         @error('cnpj')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="endereco" class="form-label">Endereço</label>
-                                        <input type="text" name="endereco" id="endereco"
-                                            class="form-control">
+                                        <input type="text" name="endereco" id="endereco" class="form-control">
                                         @error('endereco')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -93,16 +89,14 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="bairro" class="form-label">Bairro</label>
-                                        <input type="text" name="bairro" id="bairro"
-                                            class="form-control">
+                                        <input type="text" name="bairro" id="bairro" class="form-control">
                                         @error('bairro')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="cep" class="form-label">CEP</label>
-                                        <input type="text" name="cep" id="cep"
-                                            class="form-control" required>
+                                        <input type="text" name="cep" id="cep" class="form-control" required>
                                         @error('cep')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
@@ -111,30 +105,69 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <input type="text" name="cidade" id="cidade"
-                                            class="form-control">
+                                        <input type="text" name="cidade" id="cidade" class="form-control">
                                         @error('cidade')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="telefone" class="form-label">Telefone</label>
-                                        <input type="text" name="telefone" id="telefone"
-                                            class="form-control" required>
+                                        <input type="text" name="telefone" id="telefone" class="form-control" required>
                                         @error('telefone')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="id_manager" class="form-label">Gerente</label>
+                                        <select id="id_manager" name="id_manager" class="form-select" required>
+                                            <option hidden>Selecione um Gerente!</option>
+                                            @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('id_manager')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" name="email" id="email" class="form-control" required>
+                                        @error('email')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="tipo" class="form-label">Tipo</label>
+                                        <select id="tipo" name="tipo" class="form-select" required>
+                                            <option hidden>Selecione o Tipo</option>
+                                            <option value="matriz">Matriz</option>
+                                            <option value="filial">Filial</option>
+                                        </select>
+                                        @error('tipo')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ativo" class="form-label">Ativo</label>
+                                        <select id="ativo" name="ativo" class="form-select" required>
+                                            <option hidden>Selecione o Status</option>
+                                            <option value="1">Ativo</option>
+                                            <option value="0">Inativo</option>
+                                        </select>
+                                        @error('ativo')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="mb-3">
-                                    <label for="id_manager" class="form-label">Gerente</label>
-                                    <select id="id_manager" name="id_manager" class="form-select" required>
-                                        <option hidden>Selecione um Gerente!</option>
-                                        @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('id_manager')
+                                    <label for="photo_path" class="form-label">Foto da Empresa (opcional)</label>
+                                    <input type="file" name="photo_path" id="photo_path" class="form-control">
+                                    @error('photo_path')
                                     <p class="text-sm text-red-600">{{ $message }}</p>
                                     @enderror
                                 </div>

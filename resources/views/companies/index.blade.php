@@ -77,11 +77,7 @@
                                         <td class="text-center align-middle bg-transparent border-bottom">
                                             {{ $company->telefone }}</td>
                                         <td class="text-center align-middle bg-transparent border-bottom">
-                                            @if($company->ativo)
-                                            Ativo
-                                            @else
-                                            Inativo
-                                            @endif
+                                            @if($company->ativo) Ativo @else Inativo @endif
                                         </td>
                                         <td class="text-center align-middle bg-transparent border-bottom">
                                             <a href="{{ route('companies.edit', $company) }}">
@@ -102,6 +98,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <!-- Adiciona a paginação aqui -->
+                            <div class="d-flex justify-content-center">
+                                {{ $companies->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
