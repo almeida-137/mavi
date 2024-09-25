@@ -119,18 +119,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="id_manager" class="form-label">Gerente</label>
-                                        <select id="id_manager" name="id_manager" class="form-select" required>
-                                            <option hidden>Selecione um Gerente!</option>
-                                            @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('id_manager')
-                                        <p class="text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">E-mail</label>
                                         <input type="email" name="email" id="email" class="form-control" required>
@@ -138,8 +127,6 @@
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                </div>
-                                <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="tipo" class="form-label">Tipo</label>
                                         <select id="tipo" name="tipo" class="form-select" required>
@@ -151,6 +138,8 @@
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>
+                                </div>
+                                <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="ativo" class="form-label">Ativo</label>
                                         <select id="ativo" name="ativo" class="form-select" required>
@@ -159,6 +148,18 @@
                                             <option value="0">Inativo</option>
                                         </select>
                                         @error('ativo')
+                                        <p class="text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="id_manager" class="form-label">Gerente</label>
+                                        <select id="id_manager" name="id_manager" class="form-select" required>
+                                            <option hidden>Selecione um Gerente!</option>
+                                            @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('id_manager')
                                         <p class="text-sm text-red-600">{{ $message }}</p>
                                         @enderror
                                     </div>

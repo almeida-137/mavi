@@ -26,8 +26,9 @@ return new class extends Migration
             $table->string('cnpj');
             $table->string('tipo');
             $table->boolean('ativo')->default(true);
-            $table->string('responsavel')->nullable();
-            $table->string('photo_path')->nullable(); // Adicionado o campo photo_path
+            $table->string('id_manager')->nullable();
+            $table->string('photo_path')->nullable();
+            $table->timestamp('ultima_atualizacao')->nullable(); // Add this line
             $table->timestamps();
         });
     }

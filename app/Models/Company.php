@@ -23,7 +23,7 @@ class Company extends Model
         'email',
         'tipo',
         'ativo',
-        'responsavel',
+        'id_manager',
         'photo_path',
     ];
 

@@ -40,7 +40,7 @@ class CompanyController extends Controller
             'cnpj' => 'required|string|max:14',
             'tipo' => 'required|string|max:255',
             'ativo' => 'boolean',
-            'responsavel' => 'nullable|string|max:255',
+            'id_manager' => 'nullable|string|max:255',
             'photo_path' => 'nullable|string|max:255',
         ]);
 
@@ -73,7 +73,7 @@ class CompanyController extends Controller
             'cnpj' => 'required|string|max:14',
             'tipo' => 'required|string|max:255',
             'ativo' => 'boolean',
-            'responsavel' => 'nullable|string|max:255',
+            'id_manager' => 'nullable|string|max:255',
             'photo_path' => 'nullable|string|max:255',
         ]);
 
