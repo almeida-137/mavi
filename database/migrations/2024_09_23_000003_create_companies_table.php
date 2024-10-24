@@ -28,7 +28,7 @@ return new class extends Migration
             $table->boolean('ativo')->default(true);
             $table->string('id_manager')->nullable();
             $table->string('photo_path')->nullable();
-            $table->timestamp('ultima_atualizacao')->nullable(); // Add this line
+            $table->timestamp('ultima_atualizacao')->nullable();
             $table->timestamps();
         });
     }

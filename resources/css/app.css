@@ -1,0 +1,12 @@
+.submenu_class {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.submenu_class.collapsed {
+    max-height: 0;
+}
+
+.submenu_class.expanded {
+    max-height: 500px; /* Ajuste conforme o conteúdo */
+}

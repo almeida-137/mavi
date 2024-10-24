@@ -1,4 +1,4 @@
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 bg-slate-900 fixed-start " id="sidenav-main">
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 bg-slate-900 fixed-start" id="sidenav-main">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -7,7 +7,7 @@
             <span class="font-weight-bold text-lg">MaVi System</span>
         </a>
     </div>
-    <div class="collapse navbar-collapse px-4  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse px-4  w-auto h-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link  {{ is_current_route('dashboard') ? 'active' : '' }}"
@@ -91,77 +91,74 @@
                 <a class="nav-link" href="{{ route('companies.index')}}">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <i class='fa fa-building'  style="font-size: 15px; width: 15px; height: 15px;"></i>
+                        <i class='fa fa-building' style="font-size: 15px; width: 15px; height: 15px;"></i>
                     </div>
                     <span class="nav-link-text ms-1">Empresas</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user"  style="font-size: 15px; width: 15px; height: 15px;"></i>
+                        <i class="fas fa-user" style="font-size: 15px; width: 15px; height: 15px;"></i>
                     </div>
                     <span class="nav-link-text ms-1">Usuários</span>
                 </a>
             </li>
-            <!-- DROPDOWN MENU -->
+            <!-- dropdown button -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <div>
-                        <svg width="30px" height="30px" viewBox="0 0 48 48" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>rtl</title>
-                            <g id="rtl" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="menu-alt-3" transform="translate(12.000000, 14.000000)" fill="#FFFFFF">
-                                    <path class="color-foreground"
-                                        d="M0,1.71428571 C0,0.76752 0.76752,0 1.71428571,0 L22.2857143,0 C23.2325143,0 24,0.76752 24,1.71428571 C24,2.66105143 23.2325143,3.42857143 22.2857143,3.42857143 L1.71428571,3.42857143 C0.76752,3.42857143 0,2.66105143 0,1.71428571 Z"
-                                        id="Path"></path>
-                                    <path class="color-background"
-                                        d="M0,10.2857143 C0,9.33894857 0.76752,8.57142857 1.71428571,8.57142857 L22.2857143,8.57142857 C23.2325143,8.57142857 24,9.33894857 24,10.2857143 C24,11.2325143 23.2325143,12 22.2857143,12 L1.71428571,12 C0.76752,12 0,11.2325143 0,10.2857143 Z"
-                                        id="Path"></path>
-                                    <path class="color-background"
-                                        d="M10.2857143,18.8571429 C10.2857143,17.9103429 11.0532343,17.1428571 12,17.1428571 L22.2857143,17.1428571 C23.2325143,17.1428571 24,17.9103429 24,18.8571429 C24,19.8039429 23.2325143,20.5714286 22.2857143,20.5714286 L12,20.5714286 C11.0532343,20.5714286 10.2857143,19.8039429 10.2857143,18.8571429 Z"
-                                        id="Path"></path>
-                                </g>
-                            </g>
-                        </svg>
+                <a class="nav-link" href="#" id="dropdownMenuButton">
+                    <div
+                        class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
+                        <i class='fa fa-folder' style="font-size: 15px; width: 15px; height: 15px;"></i>
                     </div>
-                    <span>DropDown</span>
-                    <span class="menu-arrow"></span>
+                    <span class="nav-link-text ms-1">Dropdown</span>
                 </a>
-                <ul class="submenu_class" style="display: none;">
-                    <li style="list-style-type: none;"><a class="nav-link" href="">Link 1</a></li>
-                    <li style="list-style-type: none;"><a class="nav-link" href="">Link 2</a></li>
-                    <li style="list-style-type: none;"><a class="nav-link" href="">Link 3</a></li>
+
+                <!-- Submenu -->
+                <ul class="submenu_class" id="submenu" style="display: none; list-style: none; padding-left: 20px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 1
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 2
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 3
+                        </a>
+                    </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user" style="font-size: 15px; width: 15px; height: 15px;"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Usuários</span>
+                </a>
             </li>
             <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const userLink = document.querySelector('.nav-item > a[href="#"]');
-                const submenu = document.querySelector('.submenu_class');
+                const dropdownButton = document.getElementById('dropdownMenuButton');
+                const submenu = document.getElementById('submenu');
 
-                userLink.addEventListener('click', function(event) {
+                dropdownButton.addEventListener('click', function(event) {
                     event.preventDefault();
-
-                    // Fecha outros submenus se houver
-                    const allSubmenus = document.querySelectorAll('.submenu_class');
-                    allSubmenus.forEach(sm => {
-                        if (sm !== submenu) {
-                            sm.style.display = 'none';
-                        }
-                    });
-
-                    // Alterna o submenu atual
-                    submenu.style.display = (submenu.style.display === 'none' || submenu.style
-                        .display === '') ? 'block' : 'none';
-                });
-
-                // Fecha o submenu se clicar fora dele
-                document.addEventListener('click', function(event) {
-                    if (!userLink.contains(event.target) && !submenu.contains(event.target)) {
+                    if (submenu.style.display === 'none' || submenu.style.display === '') {
+                        submenu.style.display = 'block';
+                        submenu.classList.add('expanded');
+                        submenu.classList.remove('collapsed');
+                    } else {
                         submenu.style.display = 'none';
+                        submenu.classList.add('collapsed');
+                        submenu.classList.remove('expanded');
                     }
                 });
             });

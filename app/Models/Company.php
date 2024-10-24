@@ -25,6 +25,7 @@ class Company extends Model
         'ativo',
         'id_manager',
         'photo_path',
+        'ultima_atualizacao',
     ];
 
     // Atualiza a data da última atualização antes de salvar
