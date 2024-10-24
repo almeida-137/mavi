@@ -88,16 +88,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('companies.index')}}">
-                    <div
-                        class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <i class='fa fa-building' style="font-size: 15px; width: 15px; height: 15px;"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Empresas</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
@@ -106,21 +96,18 @@
                     <span class="nav-link-text ms-1">Usuários</span>
                 </a>
             </li>
-            <!-- dropdown button -->
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="dropdownMenuButton">
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#" id="dropdownMenuButton1">
                     <div
                         class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <i class='fa fa-folder' style="font-size: 15px; width: 15px; height: 15px;"></i>
+                        <i class='fa fa-building' style="font-size: 15px; width: 15px; height: 15px;"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dropdown</span>
+                    <span class="nav-link-text ms-1">Empresas</span>
                 </a>
-
-                <!-- Submenu -->
-                <ul class="submenu_class" id="submenu" style="display: none; list-style: none; padding-left: 20px;">
+                <ul class="submenu_class" id="submenu1" style="display: none; list-style: none; padding-left: 20px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 1
+                        <a class="nav-link" href="{{ route('companies.index')}}">
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Lista de Empresas
                         </a>
                     </li>
                     <li class="nav-item">
@@ -128,29 +115,71 @@
                             <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 2
                         </a>
                     </li>
+                </ul>
+            </li> -->
+
+            <?php
+// Inicializa os estados dos dropdowns com ícones diferentes
+$dropdowns = [
+    ['id' => 1, 'title' => 'Empresas', 'isOpen' => false, 'icon' => 'fa-building', 'href' => ''], 
+    ['id' => 2, 'title' => 'Dropdown 2', 'isOpen' => false, 'icon' => 'fa-folder'], 
+    // Adicione mais dropdowns conforme necessário
+];
+?>
+            <?php foreach ($dropdowns as $dropdown): ?>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="dropdownMenuButton<?php echo $dropdown['id']; ?>">
+                    <div
+                        class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
+                        <i class='fa <?php echo $dropdown['icon']; ?>'
+                            style="font-size: 15px; width: 15px; height: 15px;"></i>
+                    </div>
+                    <span class="nav-link-text ms-1"><?php echo htmlspecialchars($dropdown['title']); ?></span>
+                    <i class="fa <?php echo $dropdown['isOpen'] ? 'fa-chevron-up' : 'fa-chevron-down'; ?> ms-3"
+                        id="dropdownIcon<?php echo $dropdown['id']; ?>"
+                        style="transition: transform 0.3s; display: inline-block;"></i>
+                </a>
+                <ul class="submenu_class" id="submenu<?php echo $dropdown['id']; ?>"
+                    style="display: <?php echo $dropdown['isOpen'] ? 'block' : 'none'; ?>; list-style: none; padding-left: 20px;">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item 3
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item A
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-angle-right" style="font-size: 12px;"></i> Sub-item B
                         </a>
                     </li>
                 </ul>
             </li>
+            <?php endforeach; ?>
             <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const dropdownButton = document.getElementById('dropdownMenuButton');
-                const submenu = document.getElementById('submenu');
+                // Seleciona todos os botões de dropdown
+                const dropdownButtons = document.querySelectorAll('[id^="dropdownMenuButton"]');
 
-                dropdownButton.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    if (submenu.style.display === 'none' || submenu.style.display === '') {
-                        submenu.style.display = 'block';
-                        submenu.classList.add('expanded');
-                        submenu.classList.remove('collapsed');
-                    } else {
-                        submenu.style.display = 'none';
-                        submenu.classList.add('collapsed');
-                        submenu.classList.remove('expanded');
-                    }
+                dropdownButtons.forEach(button => {
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+
+                        // Encontra o ID do submenu e do ícone correspondente
+                        const dropdownId = button.id.slice(-1); // Extrai o número do ID
+                        const submenu = document.getElementById(`submenu${dropdownId}`);
+                        const dropdownIcon = document.getElementById(
+                            `dropdownIcon${dropdownId}`);
+
+                        // Alterna a exibição do submenu
+                        if (submenu.style.display === 'none' || submenu.style.display === '') {
+                            submenu.style.display = 'block';
+                            dropdownIcon.classList.remove('fa-chevron-down');
+                            dropdownIcon.classList.add('fa-chevron-up');
+                        } else {
+                            submenu.style.display = 'none';
+                            dropdownIcon.classList.remove('fa-chevron-up');
+                            dropdownIcon.classList.add('fa-chevron-down');
+                        }
+                    });
                 });
             });
             </script>
