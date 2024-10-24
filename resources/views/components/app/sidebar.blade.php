@@ -135,15 +135,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <div
-                        class="icon icon-shape icon-sm px-0 text-center d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user" style="font-size: 15px; width: 15px; height: 15px;"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Usuários</span>
-                </a>
-            </li>
             <script>
             document.addEventListener('DOMContentLoaded', function() {
                 const dropdownButton = document.getElementById('dropdownMenuButton');
